@@ -2,13 +2,15 @@ require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 const app = express();
 
 //! Middlewares
 app.use(express.json());
 
 //! Routes
-app.use("/auth", authRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/users", userRoutes);
 
 app.get("/", (req, res) =>
   res.status(200).json({ success: true, message: "Server is running smoothly" })
